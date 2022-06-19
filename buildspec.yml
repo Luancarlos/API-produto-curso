@@ -1,0 +1,24 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+    commands:
+      - echo INSTALL DEPENDENCES
+      - mvn install
+  build:
+    commands:
+      - echo BUILD APLICATION
+      - mvn compile
+      - mvn test
+  post_build:
+    commands:
+      - echo INIT POST BUILD
+      - mvn package
+      - cd target/
+      - ls -la
+artifacts:
+  files:
+    - apidemo.jar
+  base-directory: target
+  discard-paths: yes
